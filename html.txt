@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Adama Nuhu | Cybersecurity & Digital Forensics Portfolio</title>
+<meta name="description" content="Portfolio of Adama Nuhu — Cybersecurity undergraduate (MIVA Open University) specializing in digital forensics: forensic acquisition, network traffic reconstruction, and digital evidence admissibility.">
+<style>
+  :root{
+    --bg:#0a0e17; --bg2:#0d1322; --panel:#111a2e; --line:#1e2a45;
+    --txt:#e6edf7; --muted:#8b98b3; --accent:#00e5a0; --accent2:#38bdf8;
+    --mono:'Courier New',Consolas,monospace; --sans:'Segoe UI',system-ui,-apple-system,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--txt);font-family:var(--sans);line-height:1.6}
+  ::selection{background:var(--accent);color:#04110b}
+  a{color:var(--accent2);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* ===== NAV ===== */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-inner{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 24px}
+  .logo{font-family:var(--mono);font-weight:bold;color:var(--accent);font-size:1.05rem}
+  .logo span{color:var(--accent2)}
+  .nav-links{display:flex;gap:26px;list-style:none}
+  .nav-links a{color:var(--muted);font-size:.92rem;font-weight:600;transition:color .2s}
+  .nav-links a:hover,.nav-links a.active{color:var(--accent);text-decoration:none}
+  .burger{display:none;background:none;border:none;color:var(--txt);font-size:1.5rem;cursor:pointer}
+
+  /* ===== HERO ===== */
+  .hero{min-height:100vh;display:flex;align-items:center;padding:120px 24px 60px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(600px 300px at 80% 20%,rgba(0,229,160,.08),transparent),
+    radial-gradient(500px 300px at 10% 80%,rgba(56,189,248,.07),transparent)}
+  .hero-inner{max-width:1100px;margin:auto;position:relative}
+  .kicker{font-family:var(--mono);color:var(--accent);font-size:.95rem;margin-bottom:14px}
+  h1{font-size:clamp(2.2rem,5.5vw,3.6rem);line-height:1.12;margin-bottom:16px}
+  h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .typeline{font-family:var(--mono);font-size:clamp(1rem,2.5vw,1.3rem);color:var(--accent2);min-height:1.6em;margin-bottom:22px}
+  .cursor{display:inline-block;width:10px;background:var(--accent2);animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .hero p.lead{max-width:640px;color:var(--muted);font-size:1.05rem;margin-bottom:32px}
+  .btns{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:13px 26px;border-radius:8px;font-weight:700;font-size:.95rem;transition:transform .15s,box-shadow .15s;text-decoration:none}
+  .btn:hover{text-decoration:none;transform:translateY(-2px)}
+  .btn-primary{background:var(--accent);color:#04110b}
+  .btn-primary:hover{box-shadow:0 6px 24px rgba(0,229,160,.35)}
+  .btn-ghost{border:1px solid var(--line);color:var(--txt)}
+  .btn-ghost:hover{border-color:var(--accent2)}
+
+  /* ===== SECTIONS ===== */
+  section{padding:90px 24px}
+  .wrap{max-width:1100px;margin:auto}
+  .sec-tag{font-family:var(--mono);color:var(--accent);font-size:.85rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+  h2{font-size:clamp(1.6rem,3.5vw,2.2rem);margin-bottom:36px}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.visible{opacity:1;transform:none}
+
+  /* ===== STATS ===== */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-top:40px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:24px;text-align:center}
+  .stat b{display:block;font-size:2rem;color:var(--accent);font-family:var(--mono)}
+  .stat span{color:var(--muted);font-size:.88rem}
+
+  /* ===== PROJECTS ===== */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:28px;display:flex;flex-direction:column;transition:transform .2s,border-color .2s,box-shadow .2s}
+  .card:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 14px 40px rgba(0,0,0,.45)}
+  .card .num{font-family:var(--mono);color:var(--accent2);font-size:.85rem;margin-bottom:10px}
+  .card h3{font-size:1.15rem;margin-bottom:12px}
+  .card p{color:var(--muted);font-size:.93rem;margin-bottom:14px}
+  .card ul{list-style:none;margin-bottom:16px;flex:1}
+  .card ul li{color:var(--txt);font-size:.88rem;padding:5px 0 5px 20px;position:relative}
+  .card ul li::before{content:"▸";color:var(--accent);position:absolute;left:0}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+  .tag{font-family:var(--mono);font-size:.72rem;background:var(--bg2);border:1px solid var(--line);color:var(--accent2);padding:4px 10px;border-radius:20px}
+  .card .btn{align-self:flex-start;padding:10px 20px;font-size:.85rem}
+
+  /* ===== SKILLS ===== */
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+  .skill-box{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:24px}
+  .skill-box h3{font-size:1rem;color:var(--accent);margin-bottom:14px;font-family:var(--mono)}
+  .skill-box ul{list-style:none}
+  .skill-box li{padding:5px 0;color:var(--muted);font-size:.92rem;border-bottom:1px dashed var(--line)}
+  .skill-box li:last-child{border-bottom:none}
+
+  /* ===== TIMELINE ===== */
+  .tl{border-left:2px solid var(--line);margin-left:8px;padding-left:28px}
+  .tl-item{position:relative;padding-bottom:32px}
+  .tl-item::before{content:"";position:absolute;left:-36px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--accent)}
+  .tl-item .when{font-family:var(--mono);color:var(--accent2);font-size:.82rem}
+  .tl-item h3{font-size:1.05rem;margin:4px 0}
+  .tl-item p{color:var(--muted);font-size:.92rem;max-width:640px}
+
+  /* ===== CONTACT ===== */
+  .contact-box{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:40px;text-align:center}
+  .contact-box p{color:var(--muted);max-width:520px;margin:0 auto 26px}
+  .contact-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+  footer{border-top:1px solid var(--line);padding:26px;text-align:center;color:var(--muted);font-size:.85rem;font-family:var(--mono)}
+
+  #toTop{position:fixed;bottom:24px;right:24px;background:var(--accent);color:#04110b;border:none;border-radius:8px;width:44px;height:44px;font-size:1.2rem;cursor:pointer;display:none;z-index:99}
+
+  @media(max-width:760px){
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg2);flex-direction:column;padding:18px 24px;border-bottom:1px solid var(--line)}
+    .nav-links.open{display:flex}
+    .burger{display:block}
+  }
+</style>
+<base target="_blank">
+</head>
+<body>
+
+<!-- ============  Adama Nuhu ============ -->
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">[Your<span>Name</span>]</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="kicker">// Hello World, I'm</div>
+    <h1> Adama Nuhu<br><span class="grad">Cybersecurity & Digital Forensics</span></h1>
+    <div class="typeline"><span id="typed"></span><span class="cursor">&nbsp;</span></div>
+    <p class="lead">300-Level Cybersecurity undergraduate at MIVA Open University with hands-on experience in forensic acquisition, network traffic reconstruction, and the legal admissibility of digital evidence. Open to internships and junior DFIR roles.</p>
+    <div class="btns">
+      <a href="#projects" class="btn btn-primary">View My Work</a>
+      <a href="#contact" class="btn btn-ghost">Get In Touch</a>
+      <!-- EDIT: link your CV PDF -->
+      <a href="#" class="btn btn-ghost">Download CV</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b data-count="3">0</b><span>Forensic Capstone Projects</span></div>
+      <div class="stat"><b data-count="100" data-suffix="%">0</b><span>Hash Verification Success</span></div>
+      <div class="stat"><b data-count="10" data-suffix="+">0</b><span>IOCs Extracted from PCAP</span></div>
+      <div class="stat"><b data-count="1">0</b><span>Landmark Case Analysed (SC)</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap reveal">
+    <div class="sec-tag">About Me</div>
+    <h2>Investigator's Notes</h2>
+    <p style="max-width:760px;color:var(--muted)">
+      I'm a Cybersecurity undergraduate at MIVA Open University (CYB 305: Digital Forensics and Investigation Methods),
+      building practical forensic capability across the full evidence lifecycle — acquisition, analysis, and courtroom presentation.
+      My capstone work covers forensic disk imaging with verified integrity (FTK Imager), reconstruction of a multi-stage network
+      intrusion from raw packet captures (Wireshark), and legal analysis of digital evidence admissibility under Nigeria's
+      Evidence Act 2011, including the Supreme Court's landmark decision in <em>Kubor v. Dickson</em>.
+      I believe good forensics is quiet, methodical, and brutally honest about its own limitations.
+    </p>
+  </div>
+</section>
+
+<section id="projects" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="sec-tag reveal">Case Files</div>
+    <h2 class="reveal">Forensic Capstone Projects</h2>
+    <div class="cards">
+
+      <article class="card reveal">
+        <div class="num">CASE FILE 001</div>
+        <h3>Forensic Acquisition & Preservation of Digital Evidence</h3>
+        <p>Simulated crime scene: suspected intellectual property theft via USB device. Performed a forensically sound acquisition and preserved the evidence for legal proceedings.</p>
+        <ul>
+          <li>Created bit-for-bit E01 forensic image of 16&nbsp;GB USB device with FTK Imager 8.3</li>
+          <li>Verified integrity: MD5 <code>62507aa59a8ffd…</code> &amp; SHA-1 <code>76d4b480a446…</code> matched across computed, stored and report hashes</li>
+          <li>Maintained 4-entry chain of custody from seizure to secure storage</li>
+          <li>Disclosed and analysed documentation discrepancies (device labelling) instead of concealing them</li>
+        </ul>
+        <div class="tags"><span class="tag">FTK Imager</span><span class="tag">EWF/E01</span><span class="tag">MD5 / SHA-1</span><span class="tag">Chain of Custody</span><span class="tag">Write-blocking</span></div>
+        <!-- EDIT: host the report PDF and link it here -->
+        <a href="#" class="btn btn-ghost">Read Full Report →</a>
+      </article>
+
+      <article class="card reveal">
+        <div class="num">CASE FILE 002</div>
+        <h3>Cyber Trail Reconstruction from Network Traffic &amp; Logs</h3>
+        <p>Reconstructed a simulated insider intrusion from a 69-packet Wireshark capture and corroborating attacker-side evidence across three attack stages.</p>
+        <ul>
+          <li>Reconstructed timeline: nmap SYN scan → Hydra SSH brute force → wget HTTP data retrieval</li>
+          <li>Correlated PCAP frames 30/42/45–51/56 with terminal logs; network evidence independently explained a key-exchange failure</li>
+          <li>Extracted 10 IOCs (IPs, MACs, banners, credential patterns) mapped to MITRE ATT&amp;CK T1046, T1110, T1048</li>
+          <li>Produced attribution hypothesis with stated confidence and disclosed all 7 investigation limitations</li>
+        </ul>
+        <div class="tags"><span class="tag">Wireshark</span><span class="tag">PCAP Analysis</span><span class="tag">Kali Linux</span><span class="tag">Metasploitable2</span><span class="tag">MITRE ATT&amp;CK</span><span class="tag">IOCs</span></div>
+        <a href="#" class="btn btn-ghost">Read Full Report →</a>
+      </article>
+
+      <article class="card reveal">
+        <div class="num">CASE FILE 003</div>
+        <h3>Legal Analysis &amp; Admissibility of Digital Evidence</h3>
+        <p>Analysed the Nigerian Supreme Court's landmark ruling in <em>Kubor v. Dickson</em> (2014) 4 NWLR (Pt. 1345) 534 SC on s.84 Evidence Act 2011.</p>
+        <ul>
+          <li>Applied s.84(2) admissibility conditions condition-by-condition to the electronic exhibits</li>
+          <li>Evaluated forensic procedure failures: no chain of custody, no hashing, no foundation witness</li>
+          <li>Drafted courtroom-ready simulated expert witness statement with s.84(4) certificate and declaration of truth</li>
+          <li>Distinguished technical authenticity from legal admissibility — the case's central lesson</li>
+        </ul>
+        <div class="tags"><span class="tag">Evidence Act 2011</span><span class="tag">s.84 Admissibility</span><span class="tag">Case Law Analysis</span><span class="tag">Expert Testimony</span><span class="tag">Legal Research</span></div>
+        <a href="#" class="btn btn-ghost">Read Full Report →</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-tag reveal">Toolkit</div>
+    <h2 class="reveal">Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-box reveal">
+        <h3>Digital Forensics</h3>
+        <ul><li>Disk imaging (FTK Imager, E01/EWF)</li><li>Hash verification (MD5, SHA-1, SHA-256)</li><li>Chain of custody documentation</li><li>Evidence integrity &amp; anti-contamination</li></ul>
+      </div>
+      <div class="skill-box reveal">
+        <h3>Network Analysis</h3>
+        <ul><li>Wireshark display filters &amp; frame analysis</li><li>PCAP capture and reconstruction</li><li>IOC extraction &amp; MITRE ATT&amp;CK mapping</li><li>Log correlation (auth.log, Event Viewer)</li></ul>
+      </div>
+      <div class="skill-box reveal">
+        <h3>Offensive/Defensive Labs</h3>
+        <ul><li>Kali Linux toolkit (nmap, Hydra, wget)</li><li>Metasploitable2 attack simulation</li><li>VMware virtual lab environments</li><li>Splunk &amp; Volatility (foundational)</li></ul>
+      </div>
+      <div class="skill-box reveal">
+        <h3>Legal &amp; Reporting</h3>
+        <ul><li>Evidence Act 2011 s.84 admissibility</li><li>Courtroom-ready report writing</li><li>Expert witness statement drafting</li><li>Ethical analysis &amp; limitations disclosure</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="sec-tag reveal">Timeline</div>
+    <h2 class="reveal">Education &amp; Development</h2>
+    <div class="tl">
+      <div class="tl-item reveal">
+        <div class="when">2024 — Present</div>
+        <h3>B.Sc. Cybersecurity — MIVA Open University</h3>
+        <p>300-Level. Coursework includes Digital Forensics and Investigation Methods (CYB 305), covering forensic acquisition, cyber trail reconstruction, and technology law.</p>
+      </div>
+      <div class="tl-item reveal">
+        <div class="when">Oct 2026</div>
+        <h3>Capstone Portfolio Completed — CYB 305</h3>
+        <p>Three forensic capstones: verified forensic imaging (100% hash match), multi-stage intrusion reconstruction from live packet capture, and Supreme Court admissibility analysis.</p>
+      </div>
+      <div class="tl-item reveal">
+        <div class="when">Ongoing</div>
+        <h3>Continuous Learning</h3>
+        <!-- EDIT: add your actual courses/certifications -->
+        <p>[3mtt & NTIDA,OPSWAT Certified, IBM, Cisco Networking Academy,TryHackMe, CompTIA Security+ (in progress)]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap reveal">
+    <div class="sec-tag">Handshake</div>
+    <h2>Get In Touch</h2>
+    <div class="contact-box">
+      <p>Open to internships, junior DFIR roles, and collaboration on security research. My inbox is an open port — connect and say hello.</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="#">LinkedIn 112a363b9</a>
+        <a class="btn btn-ghost" href="mailto:adama.nuhu@miva.edu.ng">Email</a>
+        <a class="btn btn-ghost" href="#">GitHub adamanuhu-star
+</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer> Adama Nuhu · Cybersecurity Portfolio · Built with coffee &amp; curiosity ·Educational Tools © 2026</footer>
+<button id="toTop" aria-label="Back to top">↑</button>
+
+<script>
+  // Typing effect
+  const roles=["Digital Forensics Student","Cybersecurity Undergraduate","Aspiring DFIR Analyst","Evidence Act Nerd"];
+  const el=document.getElementById('typed');let ri=0,ci=0,del=false;
+  (function type(){
+    const word=roles[ri];
+    el.textContent=word.slice(0,ci);
+    if(!del&&ci<word.length){ci++;setTimeout(type,70);}
+    else if(!del){del=true;setTimeout(type,1600);}
+    else if(ci>0){ci--;setTimeout(type,35);}
+    else{del=false;ri=(ri+1)%roles.length;setTimeout(type,400);}
+  })();
+
+  // Mobile nav
+  const burger=document.getElementById('burger'),links=document.getElementById('navLinks');
+  burger.addEventListener('click',()=>links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+
+  // Scroll reveal
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
+
+  // Animated counters
+  const counters=document.querySelectorAll('[data-count]');
+  const cio=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting)return;cio.unobserve(e.target);
+    const target=+e.target.dataset.count,suf=e.target.dataset.suffix||'';
+    let cur=0;const step=Math.max(1,Math.ceil(target/60));
+    const iv=setInterval(()=>{cur=Math.min(target,cur+step);e.target.textContent=cur+suf;if(cur>=target)clearInterval(iv);},22);
+  }),{threshold:.5});
+  counters.forEach(c=>cio.observe(c));
+
+  // Scroll-spy
+  const secs=[...document.querySelectorAll('section[id],header.hero')];
+  const navAs=[...document.querySelectorAll('.nav-links a')];
+  window.addEventListener('scroll',()=>{
+    let current='';
+    secs.forEach(s=>{if(scrollY>=s.offsetTop-140)current=s.id;});
+    navAs.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+current));
+    document.getElementById('toTop').style.display=scrollY>600?'block':'none';
+  });
+
+  document.getElementById('toTop').addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+</script>
+</body>
+</html>
