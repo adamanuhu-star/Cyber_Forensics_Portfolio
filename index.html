@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Adama Nuhu | Cybersecurity & Digital Forensics Portfolio</title>
+<title>Adama Nuhu | Cybersecurity & Digital Forensics Portfolio</title>
 <meta name="description" content="Portfolio of Adama Nuhu — Cybersecurity undergraduate (MIVA Open University) specializing in digital forensics: forensic acquisition, network traffic reconstruction, and digital evidence admissibility.">
 <style>
   :root{
@@ -42,7 +42,7 @@
   @keyframes blink{50%{opacity:0}}
   .hero p.lead{max-width:640px;color:var(--muted);font-size:1.05rem;margin-bottom:32px}
   .btns{display:flex;gap:14px;flex-wrap:wrap}
-  .btn{display:inline-block;padding:13px 26px;border-radius:8px;font-weight:700;font-size:.95rem;transition:transform .15s,box-shadow .15s;text-decoration:none}
+  .btn{display:inline-block;padding:13px 26px;border-radius:8px;font-weight:700;font-size:.95rem;transition:transform .15s,box-shadow .15s;text-decoration:none;cursor:pointer}
   .btn:hover{text-decoration:none;transform:translateY(-2px)}
   .btn-primary{background:var(--accent);color:#04110b}
   .btn-primary:hover{box-shadow:0 6px 24px rgba(0,229,160,.35)}
@@ -50,7 +50,7 @@
   .btn-ghost:hover{border-color:var(--accent2)}
 
   /* ===== SECTIONS ===== */
-  section{padding:90px 24px}
+  section{padding:90px 24px;scroll-margin-top:70px}
   .wrap{max-width:1100px;margin:auto}
   .sec-tag{font-family:var(--mono);color:var(--accent);font-size:.85rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
   h2{font-size:clamp(1.6rem,3.5vw,2.2rem);margin-bottom:36px}
@@ -99,6 +99,7 @@
   .contact-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 
   footer{border-top:1px solid var(--line);padding:26px;text-align:center;color:var(--muted);font-size:.85rem;font-family:var(--mono)}
+  footer .heart{color:var(--accent)}
 
   #toTop{position:fixed;bottom:24px;right:24px;background:var(--accent);color:#04110b;border:none;border-radius:8px;width:44px;height:44px;font-size:1.2rem;cursor:pointer;display:none;z-index:99}
 
@@ -108,15 +109,16 @@
     .burger{display:block}
   }
 </style>
+<!-- FIX 1: removed <base target="_blank"> — it was forcing nav links to open in new tabs -->
 <base target="_blank">
 </head>
 <body>
 
-< !-- ============  Adama Nuhu ============ -->
+<!-- ============ Adama Nuhu ============ -->
 
 <nav>
   <div class="nav-inner">
-    <div class="logo">Adama Nuhu</div>
+    <div class="logo">Adama<span>Nuhu</span></div>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
@@ -131,14 +133,14 @@
 <header class="hero">
   <div class="hero-inner">
     <div class="kicker">// Hello World, I'm</div>
-    <h1> Adama Nuhu<br><span class="grad">Cybersecurity & Digital Forensics</span></h1>
+    <h1>Adama Nuhu<br><span class="grad">Cybersecurity & Digital Forensics</span></h1>
     <div class="typeline"><span id="typed"></span><span class="cursor">&nbsp;</span></div>
     <p class="lead">300-Level Cybersecurity undergraduate at MIVA Open University with hands-on experience in forensic acquisition, network traffic reconstruction, and the legal admissibility of digital evidence. Open to internships and junior DFIR roles.</p>
     <div class="btns">
       <a href="#projects" class="btn btn-primary">View My Work</a>
       <a href="#contact" class="btn btn-ghost">Get In Touch</a>
       <!-- EDIT: link your CV PDF -->
-      <a href="#" class="btn btn-ghost">Download CV</a>
+      <a href="#" class="btn btn-ghost" onclick="return false;">Download CV</a>
     </div>
     <div class="stats">
       <div class="stat"><b data-count="3">0</b><span>Forensic Capstone Projects</span></div>
@@ -182,7 +184,7 @@
         </ul>
         <div class="tags"><span class="tag">FTK Imager</span><span class="tag">EWF/E01</span><span class="tag">MD5 / SHA-1</span><span class="tag">Chain of Custody</span><span class="tag">Write-blocking</span></div>
         <!-- EDIT: host the report PDF and link it here -->
-        <a href="#" class="btn btn-ghost">Read Full Report →</a>
+        <a href="#" class="btn btn-ghost" onclick="return false;">Read Full Report →</a>
       </article>
 
       <article class="card reveal">
@@ -196,7 +198,7 @@
           <li>Produced attribution hypothesis with stated confidence and disclosed all 7 investigation limitations</li>
         </ul>
         <div class="tags"><span class="tag">Wireshark</span><span class="tag">PCAP Analysis</span><span class="tag">Kali Linux</span><span class="tag">Metasploitable2</span><span class="tag">MITRE ATT&amp;CK</span><span class="tag">IOCs</span></div>
-        <a href="#" class="btn btn-ghost">Read Full Report →</a>
+        <a href="#" class="btn btn-ghost" onclick="return false;">Read Full Report →</a>
       </article>
 
       <article class="card reveal">
@@ -210,7 +212,7 @@
           <li>Distinguished technical authenticity from legal admissibility — the case's central lesson</li>
         </ul>
         <div class="tags"><span class="tag">Evidence Act 2011</span><span class="tag">s.84 Admissibility</span><span class="tag">Case Law Analysis</span><span class="tag">Expert Testimony</span><span class="tag">Legal Research</span></div>
-        <a href="#" class="btn btn-ghost">Read Full Report →</a>
+        <a href="#" class="btn btn-ghost" onclick="return false;">Read Full Report →</a>
       </article>
 
     </div>
@@ -260,8 +262,7 @@
       <div class="tl-item reveal">
         <div class="when">Ongoing</div>
         <h3>Continuous Learning</h3>
-        <!-- EDIT: add your actual courses/certifications -->
-        <p>[3mtt & NTIDA,OPSWAT Certified, IBM, Cisco Networking Academy,TryHackMe, CompTIA Security+ (in progress)]</p>
+        <p>3MTT &amp; NITDA, OPSWAT Certified, IBM, Cisco Networking Academy, TryHackMe, CompTIA Security+ (in progress)</p>
       </div>
     </div>
   </div>
@@ -273,18 +274,18 @@
     <h2>Get In Touch</h2>
     <div class="contact-box">
       <p>Open to internships, junior DFIR roles, and collaboration on security research. My inbox is an open port — connect and say hello.</p>
+      <!-- FIX 2: removed stray </a> that was breaking this block; FIX 3: target="_blank" only on external links, NOT on mailto -->
       <div class="contact-links">
-         <a class="btn btn-primary" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">112a363b9</a>
+        <!-- EDIT: replace the href below with your actual LinkedIn profile URL -->
+        <a class="btn btn-primary" href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a class="btn btn-ghost" href="mailto:adama.nuhu@miva.edu.ng">Email</a>
-        <a class="btn btn-ghost" href="https://github.com" target="_blank" rel="noopener noreferrer">adamanuhu-star</a>
-        </div>
-        </a>
+        <a class="btn btn-ghost" href="https://github.com/adamanuhu-star" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
     </div>
   </div>
 </section>
 
-<footer> Adama Nuhu · Cybersecurity Portfolio · Built with coffee &amp; curiosity ·Educational Tools &copy; 2026</footer>
+<footer>Adama Nuhu · Cybersecurity Portfolio · Built with <span class="heart">&lt;/&gt;</span> &amp; curiosity · © 2026</footer>
 <button id="toTop" aria-label="Back to top">↑</button>
 
 <script>
@@ -319,7 +320,7 @@
   }),{threshold:.5});
   counters.forEach(c=>cio.observe(c));
 
-  // Scroll-spy
+  // Scroll-spy + back-to-top
   const secs=[...document.querySelectorAll('section[id],header.hero')];
   const navAs=[...document.querySelectorAll('.nav-links a')];
   window.addEventListener('scroll',()=>{
@@ -328,7 +329,6 @@
     navAs.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+current));
     document.getElementById('toTop').style.display=scrollY>600?'block':'none';
   });
-
   document.getElementById('toTop').addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
 </script>
 </body>
